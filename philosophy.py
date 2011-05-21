@@ -28,6 +28,7 @@ def strip_brackets(string):
 	hihi, this is like an automata
 	"""
 	string = "" + str(string)
+    	#print "input: ",string
     	d = 0
     	k = 0
     	out = ''
@@ -54,6 +55,8 @@ def strip_brackets(string):
 		    		d -= 1
 		else:
 			out +=i
+			
+    	#print "output: ",out
     	return out
 
 def trace(article):
@@ -68,12 +71,10 @@ def trace(article):
 	data = resource.read()
 	resource.close()
 	soup = BeautifulSoup(data)
-	for i in soup.find('div',id="bodyContent").findAll('p',recursive=False):
+	for i in soup.find('div',id="bodyContent").findAll({'ul' : True, 'p' : True},recursive=False):
 		#find first link here that isn't in parenthesis
 		i = BeautifulSoup(strip_brackets(i))
 		#print i
-		#fails on greek?? sgmllib why you no like characters in position 157-166 ?
-		#f.ex on architecture
 		for j in i.findAll('a'):
 			k = 0
 			for val,att in j.attrs:
@@ -85,8 +86,6 @@ def trace(article):
 			if k==0: #citations or something, no title, skipp
 				continue
 	
-			next = urllib.quote(next)
-			#urllib.quote  fails on http://en.wikipedia.org/wiki/Old_Norman ?? (unicode)
 			if next == "Philosophy":
 				print "You have arrived"
 				return
@@ -98,9 +97,11 @@ def trace(article):
 				return
 	
 		#TODO:
-		#if you have arrived here there were no plain links in this paragraph,
-		#probably they were all enumerated, allow links in ul li tags.
+		#only checks for links in <p> tags atm
+		#but they can also appear inside <ul> <li> 
 		#f.ex http://en.wikipedia.org/wiki/Group and http://en.wikipedia.org/wiki/Components
+		#http://en.wikipedia.org/wiki/Conflict
+
 
 
 	
