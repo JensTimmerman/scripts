@@ -18,13 +18,6 @@ desperatly trying to fix it and make it refer to the philosophy page. f.ex
 
 anyway, have fun
 
-caveats
--------
-fails with utf-8/unicode errors on some pages
-fix this for me plox?
-
-the remove_parentheses function could perhaps be rewritten in a more pythonic way
-
 
 Click.java
 ==========
