@@ -27,34 +27,21 @@ def strip_brackets(string):
 	leave brackets between "<a></a>" tags in place
 	hihi, this is like an automata
 	"""
-	print "input",string
 	string = "" + str(string)
     	d = 0
     	k = 0
     	out = ''
     	for i in string:
-    		#check for <a tag when not in parantheses mode
+    		#check for tag when not in parantheses mode
         	if d < 1:
-			if k==3:
-				if i ==">":
-					k=0
-				else:
-					k=2
+			if i == '>':
+				k-=1
 					
-			if k == 2 and i == 'a':
-				k = 3
-				
-			if k == 1:
-				if i == 'a':
-					k=2
-				else:
-					k = 0
-					
-			if k==0 and i =="<":
-				k =  1
+			if i =="<":
+				k +=  1
 				
         	#check for parentheses
-        	if k < 2:
+        	if k < 1:
 			if i == '(':
 		    		d += 1
 	
@@ -67,8 +54,6 @@ def strip_brackets(string):
 		    		d -= 1
 		else:
 			out +=i
-		    	
-	print "output",out
     	return out
 
 def trace(article):
