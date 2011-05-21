@@ -1,7 +1,6 @@
 #!/bin/python
 
 import urllib2
-import urllib
 import sys
 from BeautifulSoup import BeautifulSoup
 
@@ -95,6 +94,8 @@ class PhilosophyGame():
 				
 					if not nexturl.startswith("http://"):
 						nexturl = self.prefix + nexturl
+					else: #prefix sometimes switches between wicktionary and wikipedia
+						self.prefix = nexturl.rpartition("/wiki/")[0]
 					self.trace(nexturl)
 					return
 
