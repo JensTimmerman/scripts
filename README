@@ -1,0 +1,32 @@
+This repository contains some random/fun scripts
+
+philosophy.py
+============
+
+This script plays the wikipedia philosophy game for you.
+
+The philosophy game is as folows:
+go to a random wikipedia page, 
+klick the first link that isn't in between parentheses
+arrive at the philosophy page.
+
+
+There seems to be someone (or a group) of people in active battle to make this so
+as I found a cycle with this script at the vehicle page I discovered some people were
+desperatly trying to fix it and make it refer to the philosophy page. f.ex
+(http://en.wikipedia.org/w/index.php?title=Vehicle&diff=430039885&oldid=429859075)
+
+anyway, have fun
+
+caveats
+-------
+fails with utf-8/unicode errors on some pages
+fix this for me plox?
+
+the remove_parentheses function could perhaps be rewritten in a more pythonic way
+
+
+Click.java
+==========
+This will click your mouse for infinity 
+handy when playing a really boring game
